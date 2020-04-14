@@ -117,7 +117,8 @@ PRODUCT_BOOT_JARS += \
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service_64
+    android.hardware.camera.provider@2.4-service_64 \
+    libmm-qcamera
 
 PRODUCT_PACKAGES += \
     libshim_megvii
@@ -163,6 +164,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcodec2_vndk.vendor \
     libcodec2_hidl@1.0.vendor
+
+# GCam Go
+PRODUCT_PACKAGES += \
+    GCam
 
 include vendor/xiaomi/sweet/sweet-vendor.mk
 
