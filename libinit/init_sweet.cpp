@@ -39,6 +39,7 @@
 #include "vendor_init.h"
 
 #include <fs_mgr_dm_linear.h>
+#include <sys/sysinfo.h>
 
 using android::base::GetProperty;
 
@@ -104,6 +105,27 @@ static const char *snet_prop_key[] = {
 
 }
 
+void load_dalvik_properties() {
+    struct sysinfo sys;
+
+    sysinfo(&sys);
+    if (sys.totalram < 6144ull * 1024 * 1024) {
+        // from - phone-xhdpi-6144-dalvik-heap.mk
+        property_override("dalvik.vm.heapstartsize", "16m");
+        property_override("dalvik.vm.heapgrowthlimit", "256m");
+        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heapmaxfree", "32m");
+    } else {
+        // 8GB
+        property_override("dalvik.vm.heapstartsize", "32m");
+        property_override("dalvik.vm.heapgrowthlimit", "512m");
+        property_override("dalvik.vm.heapsize", "768m");
+        property_override("dalvik.vm.heapmaxfree", "64m");
+    }
+
+    property_override("dalvik.vm.heaptargetutilization", "0.5");
+    property_override("dalvik.vm.heapminfree", "8m");
+}
 
 void vendor_load_properties() {
     const char *fingerprint = "google/redfin/redfin:11/RQ3A.210605.005/7349499:user/release-keys";
@@ -134,6 +156,7 @@ void vendor_load_properties() {
     property_override("ro.product.marketname", marketname.c_str());
     property_override("ro.product.mod_device", mod_device.c_str());
 
+    load_dalvik_properties();
 #ifdef __ANDROID_RECOVERY__
     std::string buildtype = GetProperty("ro.build.type", "userdebug");
     if (buildtype != "user") {
