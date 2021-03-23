@@ -169,6 +169,10 @@ PRODUCT_PACKAGES += \
     libcodec2_vndk.vendor \
     libcodec2_hidl@1.0.vendor
 
+# Prebuilt Google Sounds
+PRODUCT_PACKAGES += \
+    PrebuiltGoogleSounds
+
 # GCam Go
 PRODUCT_PACKAGES += \
     GCam
