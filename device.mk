@@ -65,8 +65,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/devicesettings/privapp-permissions-devicesettings.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-devicesettings.xml
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+PRODUCT_PACKAGES += \
+    CarrierConfigOverlaySweet \
+    DialerOverlaySweet \
+    FrameworkResOverlaySweet \
+    SettingsProviderOverlaySweet \
+    SystemUIOverlaySweet \
+    TelephonyOverlaySweet
 
 PRODUCT_PACKAGES += \
     NotchBarKiller
@@ -181,4 +186,3 @@ PRODUCT_PACKAGES += \
     GCam
 
 include vendor/xiaomi/sweet/sweet-vendor.mk
-
