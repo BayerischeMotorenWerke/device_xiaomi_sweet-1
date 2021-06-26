@@ -232,4 +232,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     GCam
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.3-service.clearkey \
+    libclearkeycasplugin \
+    libdrmclearkeyplugin
+
 include vendor/xiaomi/sweet/sweet-vendor.mk
