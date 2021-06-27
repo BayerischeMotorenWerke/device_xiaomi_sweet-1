@@ -270,6 +270,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     GCam
 
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-service
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.3-service.clearkey \
